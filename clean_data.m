@@ -1,8 +1,9 @@
+clear
 addpath('dataset')
-tdfread('dataset\all_gene_disease_associations.tsv')
+tdfread('dataset\curated_gene_disease_associations.tsv')
 desease_pathology_code = 'C0011853';
 id_list = [];
-counter = 0;
+% counter = 0;
 for i=1:size(diseaseId, 1)
    if (contains(diseaseId(i,:), desease_pathology_code)) == 1
 %       disp('found'); 
@@ -22,6 +23,7 @@ geneId = geneId(id_list, :);
 geneSymbol = geneSymbol(id_list, :);
 NofPmids = NofPmids(id_list, :);
 NofSnps = NofSnps(id_list, :);
+% pmid = pmid(id_list, :);
 score = score(id_list, :);
 source = source(id_list, :);
 YearFinal = YearFinal(id_list, :);
