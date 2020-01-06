@@ -3,6 +3,7 @@ addpath('dataset')
 load('cleaned_data.mat');
 % symbol_max_length = 8;
 api_call = 'http://rest.genenames.org/fetch/symbol/';
+api_call_description = 'http://www.ebi.ac.uk/proteins/api/proteins/';
 % api_call = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=gene&retmode=json&id=';
 error_name = [];
 error_index = [];
@@ -38,7 +39,12 @@ for i=1:size(geneSymbol,1)
         fprintf('-------------------------------------------------------\n');
         uniprot_ids = [uniprot_ids; data.response.docs.uniprot_ids{1}];
         protein_name = [protein_name; data.response.docs.name];
-        description = [description; data.response.docs.locus_type];
+        data = webread(strcat(api_call_description, data.response.docs.uniprot_ids{1}));
+        if isfield(data.comments{1,1}, 'text')
+            description = [description; data.comments{1,1}.text.value];
+        else 
+            description = [description; {'null'}];
+        end
 %         fprintf('Ok \n');
 %         fprintf('Gene ID analyzed: %i\n', geneId(i,:));
 %         fprintf('Gene ID found: %s\n', data.response.docs.hgnc_id);
@@ -56,7 +62,9 @@ end
 error_name = geneSymbol(error_index, :);
 if size(to_check, 1) == 0
     fprintf('Every Gene is Approved and More recent than 2010\n');
-    complete_data = table(geneSymbol_new, geneId, uniprot_ids, protein_name, description);
+    names = {'Gene_Symbol', 'Gene_ID', 'Uniprot_ID', 'Protein_Name', 'Description'};
+    complete_data = table(geneSymbol_new, geneId, uniprot_ids, protein_name, ...
+        description,'VariableNames', names);
 else
     fprintf('Some gene needs to be checked (not approved or not up-to-date\n');
 end
@@ -64,6 +72,7 @@ end
 % data_fake = webread('http://rest.genenames.org/fetch/symbol/pippo');
 a = webread('http://www.ebi.ac.uk/proteins/api/proteins/Q15067');
 
+writetable(complete_data, 'data_table.xls'); 
 
 
 
