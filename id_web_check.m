@@ -1,7 +1,8 @@
 clear
 addpath('dataset')
-load('cleaned_data.mat');
+load('cleaned_cured_data.mat');
 % symbol_max_length = 8;
+api_key = '49a2e0ca3aa9d99df092f2d0cbf92b8d';
 api_call = 'http://rest.genenames.org/fetch/symbol/';
 api_call_description = 'http://www.ebi.ac.uk/proteins/api/proteins/';
 % api_call = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=gene&retmode=json&id=';
@@ -73,6 +74,5 @@ end
 a = webread('http://www.ebi.ac.uk/proteins/api/proteins/Q15067');
 
 writetable(complete_data, 'data_table.xls'); 
-
 
 
