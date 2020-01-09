@@ -67,7 +67,7 @@ if size(to_check, 1) == 0
     complete_data = table(geneSymbol_new, geneId, uniprot_ids, protein_name, ...
         description,'VariableNames', names);
 else
-    fprintf('Some gene needs to be checked (not approved or not up-to-date\n');
+    fprintf('Some gene needs to be checked (not approved or not up-to-date)\n');
 end
 % data = webread('http://rest.genenames.org/fetch/symbol/ACOX1');
 % data_fake = webread('http://rest.genenames.org/fetch/symbol/pippo');
