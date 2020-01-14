@@ -2,7 +2,7 @@
 
 clear
 addpath('dataset')
-load('graph_data_IID.mat')
+load('graph_data.mat')
 % load('gene_interactions.mat')
 
 couples = {};
@@ -34,7 +34,7 @@ end
 fprintf('Size of Couple AFTER %u\n', size(couples, 1));
 
 couples = table(sort(couples), 'VariableNames', {'Interactions'});
-writetable(couples, 'Biogrid Interaction Table New.xls');
+writetable(couples, 'Biogrid Interaction Table IID.xls');
 
 % summarize = table({'BioGrid Human'...
 % %     ; 'Integrated Interactions Database'...
