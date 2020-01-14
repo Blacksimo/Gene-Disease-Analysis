@@ -31,5 +31,8 @@ for i=1:size(reverse_couples, 1)
       couples(id) = [];
    end
 end
-
-% summarize = [summarize; table({'Integrated Interactions Database'}, 106, 4314, 
+Database = {'Integrated Interactions Database'};
+Genes_Found_in_DB = 106;
+Proteins_Interacting = 4314;
+Interactions = 115558;
+summarize = [summarize; table(Database, Genes_Found_in_DB, Proteins_Interacting, Interactions)];
