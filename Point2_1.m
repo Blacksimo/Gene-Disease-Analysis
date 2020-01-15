@@ -37,6 +37,8 @@ d_SGI = mean(mean(d_SGI));
 
 m_SGI = mean(SGI.degree);
 
+cc_SGI = 
+
 
 %UNION INTERACTOME GRAPH
 g_U = graph(union_interactome.Gene_Symbol_A, union_interactome.Gene_Symbol_B);
@@ -45,28 +47,28 @@ plot(g_U,'Layout','force');
 array_U = [union_interactome.Gene_Symbol_A;  union_interactome.Gene_Symbol_B];
 
 [bin_U,binsize_U] = conncomp(g_U,'Type','weak');
-idx_U = binsize(bin_U) == max(binsize_U);
+idx_U = binsize_U(bin_U) == max(binsize_U);
 U = subgraph(g_U, idx_U);
 plot(U)
 
-d_U = g_U.distances;
+d_U = U.distances;
 d_U = mean(mean(d_U));
 
-m_U = mean(g_U.degree);
+m_U = mean(U.degree);
 
-%RIVEDERE
+
 %INTERSECTION INTERACTOME GRAPH
 g_I = graph(intersection.Gene_Symbol_A, intersection.Gene_Symbol_B);
 plot(g_I,'Layout','force');
 
 array_I = [intersection.Gene_Symbol_A ; intersection.Gene_Symbol_B];
-%problema qui da inf
+
 [bin_I,binsize_I] = conncomp(g_I,'Type','weak');
-idx_I = binsize(bin_I) == max(binsize_I);
+idx_I = binsize_I(bin_I) == max(binsize_I);
 I = subgraph(g_I, idx_I);
 plot(I)
-%problema qui da inf
-d_I = g_I.distances;
+
+d_I = I.distances;
 d_I = mean(mean(d_I));
 
-m_I = mean(g_I.degree);
+m_I = mean(I.degree);
