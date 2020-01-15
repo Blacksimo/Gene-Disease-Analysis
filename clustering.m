@@ -1,17 +1,33 @@
 clear
 addpath('dataset')
-load('union_interactome.mat')
+load('graph_LCC.mat')
 
-g_union = graph(union_interactome.Gene_Symbol_A, union_interactome.Gene_Symbol_B);
-% plot(g_union,'Layout','force');
+population = size(I.Nodes,1);
 
-[bin,binsize] = conncomp(g_union,'Type','weak');
-idx = binsize(bin) == max(binsize);
-SG = subgraph(g_union, idx);
-% plot(SG)
+m = mcl(I.adjacency, 0, 0, 0, 0, 0);
 
+g_intersection = digraph(m, I.Nodes);
+plot(g_intersection)
 
-m = mcl(SG.adjacency, 0, 0, 0, 0, 0);
+[bins, binsize] = conncomp(g_intersection,'Type','weak');
 
-g_union = digraph(m);
-plot(g_union)
+idx = binsize(bins) >= 10;
+I_cleaned = subgraph(g_intersection, idx);
+plot(I_cleaned)
+
+[bins_clean, binsize_clean] = conncomp(I_cleaned,'Type','weak');
+
+pvalue = [];
+test_passed_clusters = {};
+counter = 1;
+for i=1:size(binsize_clean,2)
+    temp_logic_class = bins_clean == i;
+    temp_subgraph = subgraph(I_cleaned, temp_logic_class);
+    pvalue = [pvalue; hygepdf(1, population, size(temp_subgraph.Nodes,1), 106)];
+    if pvalue(i) <= 0.05
+        temp_indeces = bins_clean == i;
+        test_passed_clusters{counter} = subgraph(I_cleaned, temp_indeces);
+        counter = counter +1;
+    end
+end
+
