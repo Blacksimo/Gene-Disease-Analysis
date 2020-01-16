@@ -1,0 +1,111 @@
+I grafici e le tabelle sono ordinate secondo una lista sui primi 10 elementi per:
+
+p-value ranking
+
+che rappresenta:
+
+The p-value is computer from the Fisher exact test which is a proportion test that assumes a binomila distribution and independence for
+probability of any gene belonging to any set
+
+
+
+
+2.1) Calculate the main network measures for SGI, I and U
+a) Calculate the following global (i.e. concerning the whole network and not the single nodes)
+measures of SGI, U and I (only if no. of nodes >20):
+• No. of nodes and no. of links
+• No. of connected components
+• No. of isolated nodes
+• Average path length
+• Average degree
+• Average clustering coefficient
+• Network diameter & radius
+• Centralization
+
+
+
+SGI:
+• No. of nodes and no. of links: node=88   link=219
+• No. of connected components =  1
+• No. of isolated nodes = 12
+• Average path length = 3.2211
+• Average degree = 5.6389
+• Average clustering coefficient = 1.0628
+• Network diameter & radius = d=8 r=4
+• Centralization = 0.2489
+
+
+U:
+• No. of nodes and no. of links: node=4314 link= 8378
+• No. of connected components = 1
+• No. of isolated nodes = 0
+• Average path length = 3.5853
+• Average degree = 3.8841
+• Average clustering coefficient = 1.1811
+• Network diameter & radius = d=8 r=4
+• Centralization = 0.2542
+
+I:
+• No. of nodes and no. of links: node= 2919 link= 4382
+• No. of connected components = 1
+• No. of isolated nodes = 28
+• Average path length = 4.0548
+• Average degree = 2.933881466255567
+• Average clustering coefficient = 0.8649
+• Network diameter & radius = d=8 r=5
+• Centralization = 0.1027
+
+
+b) Isolate the largest connected component (LCC) of I and U and calculate the following
+global and local (i.e. for each node) measures:
+
+GLOBAL
+
+i)
+• N. of nodes and no. of links
+• Average path length
+• Average degree
+• Average clustering coefficient
+• Network diameter & radius
+• Centralization
+
+
+U:
+• N. of nodes and no. of links = node=4314 link= 8378
+• Average path length = 3.5853
+• Average degree = 3.8841
+• Average clustering coefficient = 1.1811
+• Network diameter & radius = d=8 r=4
+• Centralization = 0.2542
+
+
+I:
+• N. of nodes and no. of links = node = 2891 link = 4362
+• Average path length = 4.0548
+• Average degree = 2.933881466255567
+• Average clustering coefficient = 0.8649
+• Network diameter & radius = d=8 r=5
+• Centralization = 0.1027
+
+LOCAL
+
+ii)
+• Node degree
+• Betweenness centrality
+• Eigenvector centrality
+• Closeness centrality
+• ratio Betweenness/Node degree
+
+U:
+• Node degree = 
+• Betweenness centrality = 
+• Eigenvector centrality = 
+• Closeness centrality = 
+• ratio Betweenness/Node degree =
+
+I:
+• Node degree = 
+• Betweenness centrality = 
+• Eigenvector centrality = 
+• Closeness centrality = 
+• ratio Betweenness/Node degree =
