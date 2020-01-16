@@ -33,4 +33,3 @@ for i=1:size(binsize_clean_U,2)
         pvalue_passed_U = [pvalue_passed_U; pvalue_U(i)];
     end
 end
-
