@@ -1,5 +1,6 @@
 clear
 addpath('dataset')
+addpath('utils\MMCL-master')
 load('graph_LCC.mat')
 
 population = size(I.Nodes,1);
@@ -23,7 +24,7 @@ counter = 1;
 for i=1:size(binsize_clean,2)
     temp_logic_class = bins_clean == i;
     temp_subgraph = subgraph(I_cleaned, temp_logic_class);
-    pvalue = [pvalue; hygepdf(1, population, size(temp_subgraph.Nodes,1), 106)];
+    pvalue = [pvalue; hygepdf(1, population, 106, size(temp_subgraph.Nodes,1))];
     if pvalue(i) <= 0.05
         temp_indeces = bins_clean == i;
         test_passed_clusters{counter} = subgraph(I_cleaned, temp_indeces);
