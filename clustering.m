@@ -19,6 +19,7 @@ plot(I_cleaned)
 [bins_clean, binsize_clean] = conncomp(I_cleaned,'Type','weak');
 
 pvalue = [];
+pvalue_passed = [];
 test_passed_clusters = {};
 counter = 1;
 for i=1:size(binsize_clean,2)
@@ -29,6 +30,7 @@ for i=1:size(binsize_clean,2)
         temp_indeces = bins_clean == i;
         test_passed_clusters{counter} = subgraph(I_cleaned, temp_indeces);
         counter = counter +1;
+        pvalue_passed = [pvalue_passed; pvalue(i)];
     end
 end
 

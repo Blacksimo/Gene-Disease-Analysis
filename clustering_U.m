@@ -21,6 +21,7 @@ plot(U_cleaned)
 pvalue_U = [];
 test_passed_clusters_U = {};
 counter_U = 1;
+pvalue_passed_U = [];
 for i=1:size(binsize_clean_U,2)
     temp_logic_class_U = bins_clean_U == i;
     temp_subgraph_U = subgraph(U_cleaned, temp_logic_class_U);
@@ -29,6 +30,7 @@ for i=1:size(binsize_clean_U,2)
         temp_indeces_U = bins_clean_U == i;
         test_passed_clusters_U{counter_U} = subgraph(U_cleaned, temp_indeces_U);
         counter_U = counter_U +1;
+        pvalue_passed_U = [pvalue_passed_U; pvalue_U(i)];
     end
 end
 
