@@ -20,13 +20,13 @@ for i=1:size(couples,1)
     idx_A = find(biogrid_interactions.OfficialSymbolInteractorA == temp_couple(1));
     if ~isempty(idx_A)
         idx_A = idx_A(1,1);
-        entrez_a = biogrid_interactions.OfficialSymbolInteractorA;
+        entrez_a = biogrid_interactions.EntrezGeneInteractorA;
         entrez_a = entrez_a(idx_A);
     else
         idx_A = find(biogrid_interactions.OfficialSymbolInteractorB == temp_couple(1));
         if ~isempty(idx_A)
             idx_A = idx_A(1,1);
-            entrez_a = biogrid_interactions.OfficialSymbolInteractorB;
+            entrez_a = biogrid_interactions.EntrezGeneInteractorB;
             entrez_a = entrez_a(idx_A);
         else
             fprintf('Skipped \n')
@@ -37,13 +37,13 @@ for i=1:size(couples,1)
     idx_B = find(biogrid_interactions.OfficialSymbolInteractorA == temp_couple(2));
     if ~isempty(idx_B)
         idx_B = idx_B(1,1);
-        entrez_b = biogrid_interactions.OfficialSymbolInteractorA;
+        entrez_b = biogrid_interactions.EntrezGeneInteractorA;
         entrez_b = entrez_b(idx_B);
     else
         idx_B = find(biogrid_interactions.OfficialSymbolInteractorB == temp_couple(2));
         if ~isempty(idx_B)
             idx_B = idx_B(1,1);
-            entrez_b = biogrid_interactions.OfficialSymbolInteractorB;
+            entrez_b = biogrid_interactions.EntrezGeneInteractorB;
             entrez_b = entrez_b(idx_B);
         else
             fprintf('Skipped \n')
@@ -51,5 +51,5 @@ for i=1:size(couples,1)
             continue
         end
     end
-    complete_gene_list_entrez_id = [complete_gene_list_entrez_id; strcat(entrez_a, ',', entrez_b)];
+    complete_gene_list_entrez_id = [complete_gene_list_entrez_id; strcat(string(entrez_a), ',', string(entrez_b))];
 end
