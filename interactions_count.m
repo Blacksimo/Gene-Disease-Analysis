@@ -70,7 +70,8 @@ for i=1:size(couples,1)
             interactions_only_genes = [interactions_only_genes; table(Gene_Symbol_A, Gene_Symbol_B, Uniprot_A, Uniprot_B, Database_Source)];
 
         end
-        
+        U_betweeness = normalize(U_betweeness);
+        U_ratio = U_betweeness(1:end, 1)./U_nodes_degree(1:end, 1);
 %         couple_only_seed_A = {couple_only_seed_A; couple(1)};
 %         couple_only_seed_B = {couple_only_seed_B; couple(2)};
 %         if ismember( ,couples{i,1})
