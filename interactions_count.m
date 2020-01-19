@@ -72,6 +72,10 @@ for i=1:size(couples,1)
         end
         U_betweeness = normalize(U_betweeness);
         U_ratio = U_betweeness(1:end, 1)./U_nodes_degree(1:end, 1);
+        
+        gObj = biograph(I.adjacency,I.Nodes);
+        view(gObj);
+        
 %         couple_only_seed_A = {couple_only_seed_A; couple(1)};
 %         couple_only_seed_B = {couple_only_seed_B; couple(2)};
 %         if ismember( ,couples{i,1})

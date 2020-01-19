@@ -34,3 +34,4 @@ for i=1:size(binsize_clean,2)
     end
 end
 
+t = table(table2cell(U.Nodes), normalize(U.centrality('betweenness')));
